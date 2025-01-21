@@ -1,0 +1,266 @@
+$app-bg-color: #F9F6EE;
+$primary-color: #6082B6;
+$secondary-color: #478778;
+$text-color: #333;
+$header-bg-color: #2c3e50;
+$footer-bg-color: #34495e;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial, sans-serif';
+  background-color: $app-bg-color;
+  color: $text-color;
+  line-height: 1.6;
+  font-size: 1rem;
+ 
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.header {
+  // background-color: $header-bg-color;
+  background: linear-gradient(to right, #476376, #191d1b);
+  color: #fff;
+  padding: 1.25rem;
+  text-align: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  h1 {
+    margin-bottom: 0.625rem;
+  }
+
+  .input-group {
+    margin-bottom: 0.625rem;
+
+    label {
+      margin-right: 0.625rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+    }
+  }
+
+  .score-display {
+    margin-top: 0.625rem;
+
+    label {
+      margin-right: 0.625rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: $secondary-color;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
+
+.quiz {
+    padding: 1.25rem;
+
+  h2 {
+    margin-bottom: 1.25rem;
+    color: $primary-color;
+  }
+
+  ol {
+    // list-style-type: square;
+    // padding-left: 0;
+    padding-left: 1.25rem;
+    
+
+    li {
+      margin-bottom:1.25rem;
+      
+
+      p {
+        margin-bottom: 0.625rem;
+      }
+
+      .options {
+        // display: flex;
+        // flex-wrap: wrap;
+        display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.625rem;
+
+        .option-button {
+          padding: 0.625rem 1.25rem;
+          border: 2px solid $primary-color;
+          border-radius: 0.25rem;
+          background-color: #fff;
+          color: $primary-color;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+
+          &.selected {
+            background-color: $primary-color;
+            color: #fff;
+            transform: scale(1.05);
+          }
+
+          &:hover {
+            // background-color: $primary-color;
+            transform: scale(1.05);
+            background-color: lighten($primary-color, 10%);
+            color: #fff;
+          }
+        }
+      }
+    }
+   
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+    gap: 1rem;
+
+    button {
+      padding: 0.625rem 1.25rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: $primary-color;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: darken($primary-color, 10%);
+      }
+    //   &:first-child {
+    //     margin-right: 0.5rem;  
+    //   }
+    }
+  }
+}
+
+.footer {
+  // background-color: $footer-bg-color;
+  background: linear-gradient(to right, #476376, #191d1b);
+  color: #fff;
+  padding: 0.625rem;
+  text-align: center;
+  border-radius: 0 0 0.5rem 0.5rem;
+  margin-top: 1.25rem;
+
+  p {
+    margin-bottom: 5px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 0.875rem; 
+      }
+  .app-container {
+    padding: 0.625rem;
+  }
+
+  .header, .footer {
+    padding: 0.625rem;
+  }
+
+  .quiz {
+    padding: 0.625rem;
+
+    .options {
+      flex-direction: column;
+    }
+  }
+}
+
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    animation: fadeIn 0.3s forwards;
+  }
+  
+  .modal-overlay .modal-content {
+    background-color: #fff;
+    padding:1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    transform: translateY(20px);
+    animation: slideUp 0.3s forwards;
+  }
+  
+  .modal-overlay p {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .close-button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #0056b3;
+
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  
+  @keyframes slideUp {
+    to {
+      transform: translateY(0);
+    }
+  }
+  
