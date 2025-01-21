@@ -16,7 +16,6 @@ const App = () => {
     setName(e.target.value);
   };
 
-  // const numbers = [17, 75, 64, 98, 94, 445, 45, 19, 0, 199, 165, 999];
   const numbers = useMemo(
     () => [17, 75, 64, 98, 94, 445, 45, 19, 0, 199, 165, 999],
     []
